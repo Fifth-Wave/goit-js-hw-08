@@ -1,8 +1,9 @@
+import throttle from 'lodash.throttle';
 const STORAGE_KEY = 'feedback-form-state';
 const formEl = document.querySelector('.feedback-form');
 const messageEl = formEl.querySelector('[name="message"]');
 const emailEl = formEl.querySelector('[name="email"]');
-formEl.addEventListener('input', onFormUpdate);
+formEl.addEventListener('input', throttle(onFormUpdate, 500));
 formEl.addEventListener('submit', onFormSubmit);
 
 const objectToStore = {
