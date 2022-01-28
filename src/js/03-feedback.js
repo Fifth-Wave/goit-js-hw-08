@@ -32,15 +32,16 @@ function onFormLoad() {
   if (storageInfo) {
     const restoredObject = JSON.parse(storageInfo);
     emailEl.value = restoredObject.email;
-    messageEl.textContent = restoredObject.message;
+    messageEl.value = restoredObject.message;
   }
 }
 
 function onFormSubmit(evnt) {
   evnt.preventDefault();
   const { email, message } = evnt.currentTarget;
-  console.log('email: ', email.value, ' message: ', message.textContent);
+  console.log('email: ', email.value, ' message: ', message.value);
+
   localStorage.removeItem(STORAGE_KEY);
   email.value = '';
-  message.textContent = '';
+  message.value = '';
 }
